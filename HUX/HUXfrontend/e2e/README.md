@@ -119,3 +119,5 @@ flowchart TD
 ---
 
 **Note:** For backend, frontend, and infrastructure details, always refer to the root README. 
+
+- For vendor SDK integration status, see [../../../manufacturer.md](../../../manufacturer.md) 

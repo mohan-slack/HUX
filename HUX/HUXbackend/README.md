@@ -125,3 +125,5 @@ flowchart TD
 ---
 
 **Note:** This backend is part of a larger monorepo. For frontend, testing, and infrastructure details, always refer to the root README. 
+
+- Full React Native bridge for all required vendor SDK APIs (see [../../manufacturer.md](../../manufacturer.md)) 

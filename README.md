@@ -8,16 +8,24 @@ This monorepo contains everything you need to run, develop, and deploy the HUX S
 ## 📁 Project Structure
 
 ```
-HUX/
-├── HUXfrontend/   # React Native mobile app (iOS/Android)
-├── HUXbackend/    # Node.js/Express/Prisma backend API
-├── HUXfrontend.md # Frontend documentation
-├── HUXbackend.md  # Backend documentation
-├── HUXtesting.md  # Testing documentation
-├── README.md      # (this file)
+project-root/
+├── HUX/
+│   ├── HUXfrontend/         # React Native mobile app (iOS/Android)
+│   │   ├── README.md        # Frontend documentation
+│   │   └── e2e/
+│   │       └── README.md    # Testing documentation (E2E)
+│   ├── HUXbackend/          # Node.js/Express/Prisma backend API
+│   │   └── README.md        # Backend documentation
+│   └── ...                  # Other source, assets, native_sdks, etc.
+├── README.md                # Monorepo root overview (this file)
+├── manufacturer.md          # Vendor/manufacturer integration reference
 └── .gitignore
 ```
 
+---
+
+### 🗂️ Project Architecture Diagram
+image.png
 ---
 
 ## 🚀 Quick Start
@@ -155,7 +163,7 @@ npm run ios         # Run on iOS simulator (macOS only)
   - Placeholders for vendor SDKs (Mobox-Viveon, SXRSDK, etc.)
   - Initial integration points for BLE, device scanning, and connection
 - **To Do:**
-  - Full React Native bridge for all required vendor SDK APIs (see [manufacturer.md](./manufacturer.md))
+  - Full React Native bridge for all required vendor SDK APIs (see [./manufacturer.md](./manufacturer.md))
   - Protocol mapping for supported device models
   - Event emitters for device events, OTA, etc.
   - Comprehensive documentation for SDK integration
@@ -173,7 +181,7 @@ npm run ios         # Run on iOS simulator (macOS only)
   - Automated E2E and unit testing
   - Documentation for onboarding and development
 - **Missing/To Do:**
-  - Full vendor SDK bridging (see [manufacturer.md](./manufacturer.md))
+  - Full vendor SDK bridging (see [./manufacturer.md](./manufacturer.md))
   - Device model/protocol mapping
   - Advanced analytics, RBAC, production DB setup
   - Comprehensive error handling, monitoring, and CI/CD
@@ -183,7 +191,7 @@ npm run ios         # Run on iOS simulator (macOS only)
 
 ## 🏭 Manufacturer/Vendor SDK Integration
 
-- See [manufacturer.md](./manufacturer.md) for:
+- See [./manufacturer.md](./manufacturer.md) for:
   - Vendor SDKs provided (iOS/Android)
   - Supported device protocols/models
   - APIs and device features

@@ -147,7 +147,7 @@ flowchart TD
   - Debug native code in Android Studio
 - **BLE/Device:**
   - BLE integration is scaffolded; see `src/services/BleService.ts` and native_sdks/
-  - For vendor SDK integration status, see [manufacturer.md](./manufacturer.md)
+  - For vendor SDK integration status, see [../../manufacturer.md](../../manufacturer.md)
 
 ---
 
