@@ -1,51 +1,42 @@
-# HUX Smart Ring App (React Native)
+# HUXfrontend – HUX Smart Ring Mobile App
 
-This is the mobile app for the HUX Smart Ring platform.
-
----
-
-## 📦 Structure
-
-```
-HUXfrontend/
-├── src/
-│   ├── features/      # Feature-based screens (auth, main, widgets, etc.)
-│   ├── ui/            # Shared UI components, theme
-│   ├── services/      # API, business logic, storage
-│   ├── utils/         # Utilities/helpers
-│   ├── models/        # Data models/types
-│   └── App.tsx        # App entry point
-├── assets/            # Images, icons, fonts
-├── e2e/               # Detox E2E tests
-├── __tests__/         # Jest unit tests (if any)
-├── android/           # Android native project
-├── ios/               # iOS native project
-├── app.json
-├── package.json
-├── tsconfig.json
-├── babel.config.js
-├── metro.config.js
-└── README.md
-```
+This is the React Native (Expo) mobile application for the HUX Smart Ring ecosystem.  
+It supports both iOS and Android, and provides comprehensive health, wellness, and device management features.
 
 ---
 
-## 🚀 Getting Started
+## 📚 Documentation & Project Guide
 
-1. **Install dependencies:**  
-   `npm install`
+**For full project details, setup instructions, architecture, and contribution guidelines, please see the monorepo root:**  
+[../README.md](../README.md)
 
-2. **Start Metro bundler:**  
-   `npx expo start`  
-   (or use Xcode/Android Studio for native)
+---
 
-3. **Run on device/emulator:**  
-   - iOS: `npx expo run:ios` or open in Xcode
-   - Android: `npx expo run:android` or open in Android Studio
+## 📱 Quick Start (App Only)
 
-4. **Connect to backend:**  
-   - Ensure HUXbackend is running (see [HUXbackend/README.md](../HUXHUXbackend/README.md))
-   - Update API base URL in `src/features/auth/AuthScreen.tsx` if needed.
+```sh
+# Install dependencies
+npm install
+
+# iOS setup (macOS only)
+cd ios && pod install && cd ..
+
+# Start Metro bundler
+npm start
+
+# Run on Android
+npm run android
+
+# Run on iOS
+npm run ios
+```
+
+---
+
+## 🛠️ Native Setup & Troubleshooting
+
+- For native SDK integration, BLE troubleshooting, and device-specific setup, see the [docs/](./docs/) folder and the monorepo root README.
+- For E2E and unit testing, see [e2e/README.md](./e2e/README.md).
 
 ---
 
@@ -100,3 +91,14 @@ Focus on onboarding, accessibility, and production build/test for launch readine
 - [Monorepo README](../README.md)
 - [Backend README](../HUXHUXbackend/README.md)
 - [Testing Guide](./e2e/README.md)
+
+---
+
+## 🤝 Contributing
+
+- Please follow the monorepo contribution guidelines in [../README.md](../README.md).
+- Use feature branches and submit PRs for review.
+
+---
+
+**Note:** This app is part of a larger monorepo. For backend, testing, and infrastructure details, always refer to the root README.
