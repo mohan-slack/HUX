@@ -1,0 +1,19 @@
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  pushToken    String?
+  emailVerified Boolean  @default(false)
+  emailVerificationToken String? @unique
+  emailVerificationTokenExpires DateTime?
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+} 

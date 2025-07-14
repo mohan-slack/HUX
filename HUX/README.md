@@ -1,3 +1,77 @@
+# HUX Smart Ring Monorepo
+
+Welcome to the HUX Smart Ring project! This monorepo contains both the **HUXbackend (Node.js/Express/Prisma)** and the **mobile frontend (React Native)** for the HUX Smart Ring ecosystem.
+
+---
+
+## 📁 Project Structure
+
+```
+HUX/
+├── HUXbackend/              # Node.js/Express/Prisma HUXbackend API
+├── HUXfrontend/      # React Native mobile app (iOS/Android)
+├── README.md             # (this file)
+└── .gitignore
+```
+
+- **Backend details:** [`HUXbackend/README.md`](./HUXHUXbackend/README.md)
+- **Frontend details:** [`HUXfrontend/README.md`](./HUXfrontend/README.md)
+- **Testing details:** [`HUXfrontend/e2e/README.md`](./HUXfrontend/e2e/README.md)
+
+---
+
+## 🚀 Quick Start
+
+1. **Clone the repo:**  
+   `git clone <repo-url> && cd HUX`
+
+2. **Install dependencies:**  
+   - Backend: `cd HUXbackend && npm install`
+   - Frontend: `cd HUXfrontend && npm install`
+
+3. **Run backend:**  
+   `cd HUXbackend && npm run dev`
+
+4. **Run frontend:**  
+   `cd HUXfrontend && npx expo start` (or use Xcode/Android Studio for native)
+
+5. **Run tests:**  
+   See [`HUXfrontend/e2e/README.md`](./HUXfrontend/e2e/README.md) for E2E and HUXbackend test instructions.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend:** Node.js, Express, TypeScript, Prisma ORM, SQLite (dev), JWT, Zod, Docker
+- **Frontend:** React Native, Expo, TypeScript, AsyncStorage, Expo Push, Detox (E2E)
+- **Testing:** Jest, Supertest, Detox
+
+---
+
+## 📚 Documentation
+
+- **Backend API:** Swagger docs at `/api-docs` when HUXbackend is running.
+- **Frontend:** See in-app navigation and [`HUXfrontend/README.md`](./HUXfrontend/README.md)
+- **Testing:** [`HUXfrontend/e2e/README.md`](./HUXfrontend/e2e/README.md)
+
+---
+
+## 🤝 Contributing
+
+- Please read all sub-READMEs before contributing.
+- Use feature branches and submit PRs for review.
+- See HUXbackend/frontend READMEs for code style and commit guidelines.
+
+---
+
+## 🧭 Navigation
+
+- [Backend Guide](./HUXHUXbackend/README.md)
+- [Frontend Guide](./HUXfrontend/README.md)
+- [Testing Guide](./HUXfrontend/e2e/README.md)
+
+---
+
 # HUX Smart Ring - Cross-Platform Mobile App
 
 A modern, modular React Native (TypeScript) mobile application for the HUX Smart Ring ecosystem, supporting multiple ring models and comprehensive health monitoring features.
@@ -45,7 +119,7 @@ The HUX Smart Ring app is designed to provide a world-class user experience for 
 
 ### Project Structure
 ```
-HUXSmartRingApp/
+HUXfrontend/
 ├── src/
 │   ├── features/           # Feature modules
 │   │   ├── widgets/        # Dashboard widgets
@@ -268,7 +342,7 @@ npm run ios
 npm run ios -- --debug
 
 # Release build
-cd ios && xcodebuild -workspace HUXSmartRingApp.xcworkspace -scheme HUXSmartRingApp -configuration Release
+cd ios && xcodebuild -workspace HUXfrontend.xcworkspace -scheme HUXfrontend -configuration Release
 ```
 
 #### Device-Specific Tests
@@ -296,7 +370,7 @@ cd ios && xcodebuild -workspace HUXSmartRingApp.xcworkspace -scheme HUXSmartRing
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd HUX/HUXSmartRingApp
+cd HUX/HUXfrontend
 
 # Install dependencies
 npm install
