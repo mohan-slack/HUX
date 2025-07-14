@@ -32,14 +32,14 @@ It provides authentication, health data management, notifications, and more.
 
 ```mermaid
 flowchart LR
-  Client[Client (App/Web)]
-  API[API Endpoints (Express)]
-  Ctrl[Controllers]
-  Svc[Services]
-  DB[(Database)]
-  Email[Email Service]
-  Push[Push Service]
-  OAuth[OAuth (Google/Apple)]
+  Client(Client: App/Web)
+  API(API Endpoints: Express)
+  Ctrl(Controllers)
+  Svc(Services)
+  DB((Database))
+  Email(Email Service)
+  Push(Push Service)
+  OAuth(OAuth: Google/Apple)
 
   Client --> API
   API --> Ctrl
@@ -99,11 +99,11 @@ npm test
 
 ```mermaid
 flowchart TD
-  Dev[SQLite (Dev)]
-  Prod[Postgres/MySQL (Prod)]
-  Prisma[Prisma ORM]
-  Migrate[Prisma Migrate]
-  App[Backend App]
+  Dev(SQLite: Dev)
+  Prod(Postgres/MySQL: Prod)
+  Prisma(Prisma ORM)
+  Migrate(Prisma Migrate)
+  App(Backend App)
 
   Dev -- dev DB --> Prisma
   Prod -- prod DB --> Prisma
