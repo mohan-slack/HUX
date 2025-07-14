@@ -25,7 +25,8 @@ project-root/
 ---
 
 ### 🗂️ Project Architecture Diagram
-image.png
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/4ff59361-afed-4b6d-923a-59fe13741b4e" />
+
 ---
 
 ## 🚀 Quick Start
