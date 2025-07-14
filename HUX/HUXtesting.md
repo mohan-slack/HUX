@@ -20,15 +20,15 @@ This document covers E2E, unit, and integration testing for the HUX Smart Ring p
 
 ```mermaid
 flowchart TD
-  Dev(Developer)
-  PR(Pull Request)
-  CI(CI Pipeline)
-  FEUnit(Frontend Unit Tests: Jest)
-  FEE2E(Frontend E2E: Detox)
-  BEUnit(Backend Unit Tests: Jest)
-  BEE2E(Backend E2E: Supertest)
-  Coverage(Coverage Reports)
-  Merge(Merge/Deploy)
+  Dev[Developer]
+  PR[Pull Request]
+  CI[CI Pipeline]
+  FEUnit[Frontend Unit Tests - Jest]
+  FEE2E[Frontend E2E - Detox]
+  BEUnit[Backend Unit Tests - Jest]
+  BEE2E[Backend E2E - Supertest]
+  Coverage[Coverage Reports]
+  Merge[Merge/Deploy]
 
   Dev --> PR
   PR --> CI
@@ -95,11 +95,11 @@ npm test
 
 ```mermaid
 flowchart TD
-  TestRun(Run Tests)
-  Jest(Jest/Detox/Supertest)
-  Coverage(Generate Coverage)
-  Folder(coverage/ Folder)
-  Report(HTML/Text Report)
+  TestRun[Run Tests]
+  Jest[Jest/Detox/Supertest]
+  Coverage[Generate Coverage]
+  Folder[coverage/ Folder]
+  Report[HTML/Text Report]
 
   TestRun --> Jest
   Jest --> Coverage

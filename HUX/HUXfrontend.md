@@ -29,13 +29,13 @@ It supports both iOS and Android, and provides comprehensive health, wellness, a
 
 ```mermaid
 flowchart TD
-  App(App Entry (App.tsx))
-  Nav(Navigation)
-  Features(Features: health, wellness, device, etc.)
-  Services(Services: API, BLE, business logic)
-  UI(UI Components)
-  Native(Native SDKs: iOS/Android)
-  Assets(Assets: images, icons, fonts)
+  App[App Entry - App.tsx]
+  Nav[Navigation]
+  Features[Features: health, wellness, device, etc.]
+  Services[Services: API, BLE, business logic]
+  UI[UI Components]
+  Native[Native SDKs: iOS/Android]
+  Assets[Assets: images, icons, fonts]
 
   App --> Nav
   Nav --> Features
@@ -98,22 +98,22 @@ HUXfrontend/
 
 ```mermaid
 flowchart TD
-  A(HUXfrontend/)
-  B1(src/)
-  B2(native_sdks/)
-  B3(assets/)
-  B4(design/)
-  B5(docs/)
-  B6(test/)
-  B7(e2e/)
-  B8(android/)
-  B9(ios/)
-  B10(configs, package.json, etc.)
-  C1(features/)
-  C2(services/)
-  C3(ui/)
-  C4(models/)
-  C5(utils/)
+  A[HUXfrontend/]
+  B1[src/]
+  B2[native_sdks/]
+  B3[assets/]
+  B4[design/]
+  B5[docs/]
+  B6[test/]
+  B7[e2e/]
+  B8[android/]
+  B9[ios/]
+  B10[configs, package.json, etc.]
+  C1[features/]
+  C2[services/]
+  C3[ui/]
+  C4[models/]
+  C5[utils/]
 
   A --> B1
   A --> B2
