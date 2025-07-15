@@ -1,0 +1,11 @@
+{
+  "name": "HUXfrontend",
+  "displayName": "HUXfrontend",
+  "extra": {
+    "eas": {
+      "projectId": "504861d3-a645-47c5-950a-e0a38eae9444"
+    }
+  },
+  "owner": "mohan_14342019",
+  "slug": "hux"
+}
