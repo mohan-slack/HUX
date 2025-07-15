@@ -25,11 +25,13 @@ target 'HUXSmartRingApp' do
   )
 
   post_install do |installer|
-    # ✅ Sandbox Fix for rsync (Copy Pods Resources)
+    # ✅ Sandbox Fix for rsync (Replace with cp to avoid sandbox issues)
     installer.pods_project.targets.each do |target|
       target.shell_script_build_phases.each do |phase|
         if phase.name == "[CP] Copy Pods Resources"
-          phase.shell_script = "RSYNC_PROTECT_TMP_FILES=NO\n" + phase.shell_script
+          phase.shell_script = phase.shell_script
+                                  .gsub(/RSYNC_PROTECT_TMP_FILES=[^\n]*/, "")
+                                  .gsub(/rsync.*--delete/, "cp -R")
         end
       end
     end
