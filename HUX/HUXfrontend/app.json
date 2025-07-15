@@ -1,6 +1,6 @@
 {
-  "name": "HUXfrontend",
-  "displayName": "HUXfrontend",
+  "name": "HUXSmartRingApp",
+  "displayName": "HUXSmartRingApp",
   "extra": {
     "eas": {
       "projectId": "504861d3-a645-47c5-950a-e0a38eae9444"
