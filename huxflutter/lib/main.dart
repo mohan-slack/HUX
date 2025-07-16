@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'features/auth/LoginScreen.dart';
 import 'features/auth/SignupScreen.dart';
 import 'features/auth/ForgotPasswordScreen.dart';
+import 'features/dashboard/HUXScoreWidget.dart';
+import 'features/dashboard/HeartRateWidget.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,6 +13,7 @@ void main() {
       '/': (context) => LoginScreen(),
       '/signup': (context) => SignupScreen(),
       '/forgot': (context) => ForgotPasswordScreen(),
+      '/dashboard': (context) => DashboardPage(),
     },
   ));
 }
@@ -119,7 +122,6 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final features = [
-      _FeatureCardData('Overall Score', Icons.emoji_events, '82', 'Good'),
       _FeatureCardData('Sleep Tracking', Icons.bedtime, '7h 15m', 'Last night'),
       _FeatureCardData('Heart Rate', Icons.favorite, '72', 'bpm'),
       _FeatureCardData('Step Count', Icons.directions_walk, '8,500', 'Today'),
@@ -140,14 +142,31 @@ class DashboardPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(16),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          children: features.map((f) => _FeatureCard(data: f)).toList(),
-        ),
+        children: [
+          HUXScoreWidget(
+            userName: "Alex",
+            stressLevel: "Low",
+            heartRateVariability: 65,
+            initialScore: 82,
+          ),
+          const SizedBox(height: 24),
+          HeartRateWidget(
+            userName: "Alex",
+            stressLevel: "Low",
+            heartRateVariability: 65,
+          ),
+          const SizedBox(height: 24),
+          GridView.count(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            children: features.map((f) => _FeatureCard(data: f)).toList(),
+          ),
+        ],
       ),
     );
   }

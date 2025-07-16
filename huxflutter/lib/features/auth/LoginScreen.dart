@@ -61,10 +61,10 @@ class _LoginScreenState extends State<LoginScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: size.height * 0.06, left: 24, right: 24),
+              padding: EdgeInsets.only(bottom: size.height * 0.12, left: 16, right: 16), // leave space for Explore
               child: GlassmorphicContainer(
                 width: double.infinity,
-                height: 370,
+                height: 320,
                 borderRadius: 32,
                 blur: 20,
                 alignment: Alignment.center,
@@ -84,98 +84,114 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Email
-                      _GlassTextField(
-                        hint: "Email",
-                        controller: _emailController,
-                      ),
-                      SizedBox(height: 16),
-                      // Password
-                      _GlassTextField(
-                        hint: "Password",
-                        obscure: true,
-                        controller: _passwordController,
-                      ),
-                      SizedBox(height: 24),
-                      // Login Button
-                      _GlassButton(
-                        text: _loading ? "Logging in..." : "Login",
-                        onPressed: _loading ? null : _onLogin,
-                      ),
-                      SizedBox(height: 16),
-                      // Forgot Password
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/forgot');
-                        },
-                        child: Text(
-                          "Forgot password?",
-                          style: GoogleFonts.poppins(
-                            color: Colors.white.withOpacity(0.85),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Email
+                        _GlassTextField(
+                          hint: "Email",
+                          controller: _emailController,
+                        ),
+                        SizedBox(height: 12),
+                        // Password
+                        _GlassTextField(
+                          hint: "Password",
+                          obscure: true,
+                          controller: _passwordController,
+                        ),
+                        SizedBox(height: 18),
+                        // Login Button
+                        _GlassButton(
+                          text: _loading ? "Logging in..." : "Login",
+                          onPressed: _loading ? null : _onLogin,
+                        ),
+                        SizedBox(height: 10),
+                        // Forgot Password
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/forgot');
+                          },
+                          child: Text(
+                            "Forgot password?",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white.withOpacity(0.85),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 16),
-                      // Sign up row
-                      Flexible(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              "Don't have an account? ",
-                              style: GoogleFonts.poppins(
-                                color: Colors.white.withOpacity(0.85),
-                                fontSize: 16,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/signup');
-                              },
-                              child: Text(
-                                "Sign up",
+                        SizedBox(height: 10),
+                        // Sign up row
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                "Don't have an account? ",
                                 style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                                  color: Colors.white.withOpacity(0.85),
+                                  fontSize: 15,
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 8),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/signup');
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white.withOpacity(0.2),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black26,
-                                      blurRadius: 8,
-                                      offset: Offset(2, 4),
-                                    ),
-                                  ],
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/signup');
+                                },
+                                child: Text(
+                                  "Sign up",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
                                 ),
-                                padding: EdgeInsets.all(8),
-                                child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 28),
                               ),
-                            ),
-                          ],
+                              SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/signup');
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 2),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.white.withOpacity(0.2),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 8,
+                                        offset: Offset(2, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  padding: EdgeInsets.all(6),
+                                  child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 22),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
+            ),
+          ),
+          // Explore button floating at the bottom
+          Positioned(
+            left: 32,
+            right: 32,
+            bottom: MediaQuery.of(context).padding.bottom + 24,
+            child: _GlassButton(
+              text: "Explore",
+              onPressed: () {
+                Navigator.pushNamed(context, '/dashboard');
+              },
             ),
           ),
         ],

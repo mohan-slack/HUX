@@ -1,0 +1,9 @@
+# Simple Ring Material
+newmtl RingMaterial
+Ka 0.2 0.2 0.2
+Kd 0.7 0.7 0.7
+Ks 0.9 0.9 0.9
+Ns 96.078431
+Ni 1.0
+d 1.0
+illum 2
