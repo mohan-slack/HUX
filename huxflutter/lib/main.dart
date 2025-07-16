@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'features/auth/LoginScreen.dart';
+import 'features/auth/SignupScreen.dart';
+import 'features/auth/ForgotPasswordScreen.dart';
 
 void main() {
-  runApp(const HuxApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    initialRoute: '/',
+    routes: {
+      '/': (context) => LoginScreen(),
+      '/signup': (context) => SignupScreen(),
+      '/forgot': (context) => ForgotPasswordScreen(),
+    },
+  ));
 }
 
 class HuxApp extends StatelessWidget {
