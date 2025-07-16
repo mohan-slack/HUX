@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'features/auth/LoginScreen.dart';
 import 'features/auth/SignupScreen.dart';
 import 'features/auth/ForgotPasswordScreen.dart';
-import 'features/dashboard/HUXScoreWidget.dart';
+import 'features/dashboard/HUXGreetingWidget.dart';
+import 'features/dashboard/ECGWidget.dart';
 import 'features/dashboard/HeartRateWidget.dart';
+import 'dart:math' as math;
 
 void main() {
   runApp(MaterialApp(
@@ -116,8 +118,49 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
+
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> with SingleTickerProviderStateMixin {
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
+  late AnimationController _glowController;
+  @override
+  void initState() {
+    super.initState();
+    _glowController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2000),
+    )..repeat(reverse: true);
+    Future.delayed(const Duration(seconds: 2), _autoSwitch);
+  }
+
+  void _autoSwitch() {
+    if (!mounted) return;
+    setState(() {
+      _currentPage = (_currentPage + 1) % 2;
+    });
+    _pageController.animateToPage(
+      _currentPage,
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeInOutCubic,
+    ).then((_) {
+      if (mounted) {
+        Future.delayed(const Duration(seconds: 2), _autoSwitch);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _glowController.dispose();
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -145,17 +188,86 @@ class DashboardPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          HUXScoreWidget(
-            userName: "Alex",
-            stressLevel: "Low",
-            heartRateVariability: 65,
-            initialScore: 82,
+          HUXGreetingWidget(
+            userName: "Mohan",
           ),
           const SizedBox(height: 24),
-          HeartRateWidget(
-            userName: "Alex",
-            stressLevel: "Low",
-            heartRateVariability: 65,
+          SizedBox(
+            height: 200,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                AnimatedBuilder(
+                  animation: Listenable.merge([_glowController, _pageController]),
+                  builder: (context, child) {
+                    double glowPage = _pageController.hasClients && _pageController.page != null
+                        ? _pageController.page!.clamp(0, 1)
+                        : _currentPage.toDouble();
+                    // Glow intensity: max at center, min at edge
+                    double glowIntensity = 0.25 + 0.25 * (1 - (glowPage - glowPage.round()).abs() * 2);
+                    // Animate glow scale
+                    double scale = 1.1 + 0.08 * math.sin(_glowController.value * 2 * math.pi);
+                    // Animate glow position (slightly shift left/right)
+                    double dx = 60 * (glowPage - 0.5);
+                    Color glowColor = glowPage < 0.5
+                        ? const Color(0xFF2196F3).withOpacity(glowIntensity)
+                        : const Color(0xFF7C3AED).withOpacity(glowIntensity);
+                    return Transform.translate(
+                      offset: Offset(dx, 0),
+                      child: Container(
+                        width: 340 * scale,
+                        height: 140 * scale,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(80),
+                          boxShadow: [
+                            BoxShadow(
+                              color: glowColor,
+                              blurRadius: 60,
+                              spreadRadius: 8,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                PageView.builder(
+                  controller: _pageController,
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return AnimatedBuilder(
+                      animation: _pageController,
+                      builder: (context, child) {
+                        double page = 0;
+                        if (_pageController.hasClients && _pageController.page != null) {
+                          page = _pageController.page!;
+                        } else {
+                          page = _currentPage.toDouble();
+                        }
+                        double delta = (page - index).abs().clamp(0.0, 1.0);
+                        double scale = 1 - 0.08 * delta;
+                        double opacity = 1 - 0.5 * delta;
+                        return Opacity(
+                          opacity: opacity,
+                          child: Transform.scale(
+                            scale: scale,
+                            child: child,
+                          ),
+                        );
+                      },
+                      child: index == 0
+                          ? ECGWidget(
+                              bpm: 88,
+                              rhythm: 'Sinus Rhythm',
+                            )
+                          : HeartRateWidget(
+                              value: 164,
+                            ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 24),
           GridView.count(
